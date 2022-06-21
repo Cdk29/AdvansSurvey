@@ -1,0 +1,74 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'cve/style.css' %}" />
+
+<div class="main-container">
+  <div class="sidebar-left">
+    <div class="logo-title">
+      <img
+        src="../../static/cve/images/advans_survey.png"
+        alt="Logo Advans Survey"
+      />
+      <h2>Advans CVE Survey</h2>
+    </div>
+    <div class="links-sidebar-container">
+      <a href="{% url 'cve:index' %}" class="link-sidebar">CVE actuelles</a>
+      <a href="{% url 'cve:archives' %}" class="link-sidebar">CVE archivées</a>
+    </div>
+    <div class="settings-sidebar-container">
+      <a href="{% url 'admin:index' %}">
+        <img src="../../static/cve/images/settings.png" alt="Settings Icon" />
+      </a>
+    </div>
+  </div>
+
+  <div class="container-right">
+    <div class="cve-main-container">
+      <div class="cve-sub-container">
+        <div class="cve-container-detail">
+            <div
+              style="
+                padding: 10px;
+                margin-top: 25px;
+                margin-bottom: 25px;
+                width: 90%;
+                box-shadow: -2px 0px 15px 1px #d2d2d2;
+                border-radius: 5px;
+              "
+            >
+              <p><span class="span-detail">Id :</span> {{ cve.id }}</p>
+              <p><span class="span-detail">Nom :</span> {{ cve.cve_name }}</p>
+              <p><span class="span-detail">Date :</span> {{ cve.pub_date }}</p>
+              <p><span class="span-detail">Sommaire :</span> {{ cve.cve_summary }}</p>
+              <p><span class="span-detail">Criticité :</span></p>
+                <div class="detail-element criticity criticity-{{ cve.cve_criticity }}">
+                  {% if cve.cve_criticity == "F" %}
+                    Faible
+                  {% endif %}
+                  {% if cve.cve_criticity == "M" %}
+                    Moyen
+                  {% endif %}
+                  {% if cve.cve_criticity == "U" %}
+                    Urgent
+                  {% endif %}
+                </div>
+              <p><span class="span-detail">Statut :</span></p>
+                <div class="detail-element status status-{{ cve.cve_status }}">
+                  {% if cve.cve_status == "N" %}
+                  Nouveau
+                {% endif %}
+                {% if cve.cve_status == "A" %}
+                  Archivé
+                {% endif %}
+                </div>
+                <hr style="color:green;">
+              <p><span class="span-detail">Actions :</span></p>
+              <div class="detail-element archive-button"><a href="#">Archiver</a></div>
+              <div class="detail-element delete-button"><a href="#">Supprimer</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

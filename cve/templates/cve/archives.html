@@ -1,0 +1,89 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'cve/style.css' %}" />
+
+<div class="main-container">
+    <div class="sidebar-left">
+        <div class="logo-title">
+        <img
+            src="../../static/cve/images/advans_survey.png"
+            alt="Logo Advans Survey"
+        />
+        <h2>Advans CVE Survey</h2>
+        </div>
+        <div class="links-sidebar-container">
+            <a href="{% url 'cve:index' %}" class="link-sidebar">CVE actuelles</a>
+        </div>
+        <div class="settings-sidebar-container">
+            <a href="{% url 'admin:index' %}">
+                <img
+                src="../../static/cve/images/settings.png"
+                alt="Settings Icon"
+                />
+            </a>
+      </div>
+    </div>
+
+    <div class="container-right">
+      <div class="cve-main-container">
+        <div class="cve-sub-container">
+        <div class="cve-container-upbar">
+          <span class="cve-upbar-option">Filtres : ...</span>
+          <span class="cve-upbar-option">Supprimer : ...</span>
+          <span class="cve-upbar-option">Archiver : ...</span><span class="cve-upbar-option">Confirmer</span>
+        </div>
+          <div class="cve-container">
+          {% if latest_cve_list %}
+          <table class="cve-table">
+            <thead>
+                <tr>
+                    <th colspan="1"></th>
+                    <th colspan="1">Id</th>
+                    <th colspan="1">Nom</th>
+                    <th colspan="1">Date</th>
+                    <th colspan="1" class="summary">Sommaire</th>
+                    <th colspan="1">Criticité</th>
+                    <th colspan="1">Archiver</th>
+                    <th colspan="1">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cve in latest_cve_list %}
+              {% if cve.cve_status != "N" %}
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>{{ cve.id }}</td>
+                    <td><a href="{% url 'cve:detail' cve.id %}"
+                      >{{ cve.cve_name }}</a
+                    ></td>
+                    <td>{{ cve.pub_date }}</td>
+                    <td>{{ cve.cve_summary|truncatewords:20 }}</td>
+                    <td>
+                      <div class="criticity criticity-{{ cve.cve_criticity }}">
+                        {% if cve.cve_criticity == "F" %}
+                          Faible
+                        {% endif %}
+                        {% if cve.cve_criticity == "M" %}
+                          Moyen
+                        {% endif %}
+                        {% if cve.cve_criticity == "U" %}
+                          Urgent
+                        {% endif %}
+                      </div>
+                    </td>
+                    <td><div class="archive-button"><a href="#">Archiver</a></div></td>
+                    <td><div class="delete-button"><a href="#">Supprimer</a></div></td>
+                  </tr>
+                {% endif %}
+            {% endfor %}
+              </tbody>
+          </table>
+          {% else %}
+            <p>No polls are available.</p>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
