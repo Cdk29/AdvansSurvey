@@ -13,6 +13,7 @@ class CVE(models.Model):
     cvss = models.TextField(default="...")
     # cve_criticity = models.CharField(max_length=1, choices=CRITICITY_CODE)
     cve_status = models.TextField(default="...")
+    _id = models.TextField(default="...") #https://stackoverflow.com/questions/66085516/pymongo-errors-duplicatekeyerror-e11000-duplicate-key-error-collection
     
     def __str__(self):
         return self.cve_name

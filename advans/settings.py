@@ -75,13 +75,19 @@ WSGI_APPLICATION = 'advans.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # ou app_database
-DATABASES = {
+"""DATABASES = {
        'default': {
            'ENGINE': 'djongo',
            'NAME': 'app_database', # app_backend est la collection
        }
-}
+}"""
 
+DATABASES = {
+       'default': {
+           'ENGINE': 'djongo',
+           'NAME': 'advans_backend', # https://www.djongomapper.com/integrating-django-with-mongodb/
+       }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

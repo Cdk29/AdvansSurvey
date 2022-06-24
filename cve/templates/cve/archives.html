@@ -51,7 +51,7 @@
             {% for cve in latest_cve_list %}
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>{{ cve.cve_name }}</td>
+                    <td>{{ cve.Id }}</td>
                     <td><a href="{% url 'cve:detail' cve.cve_name %}"
                       >{{ cve.cve_name }}</a
                     ></td>

@@ -33,7 +33,6 @@
           <span class="cve-upbar-option">Archiver : ...</span><span class="cve-upbar-option">Confirmer</span>
         </div>
           <div class="cve-container">
-          {% if latest_cve_list %}
           <table class="cve-table">
             <thead>
                 <tr>
@@ -51,7 +50,7 @@
             {% for cve in latest_cve_list %}
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>{{ cve.cve_name }}</td>
+                    <td>{{ cve.Id }}</td>
                     <td><a href="{% url 'cve:detail' cve.cve_name %}"
                       >{{ cve.cve_name }}</a
                     ></td>
@@ -68,9 +67,6 @@
             {% endfor %}
               </tbody>
           </table>
-          {% else %}
-            <p>No polls are available.</p>
-          {% endif %}
           </div>
         </div>
       </div>
