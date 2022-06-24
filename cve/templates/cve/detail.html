@@ -36,30 +36,17 @@
                 border-radius: 5px;
               "
             >
-              <p><span class="span-detail">Id :</span> {{ cve.id }}</p>
+              <p><span class="span-detail">Id :</span> {{ cve.cve_name }}</p>
               <p><span class="span-detail">Nom :</span> {{ cve.cve_name }}</p>
               <p><span class="span-detail">Date :</span> {{ cve.pub_date }}</p>
               <p><span class="span-detail">Sommaire :</span> {{ cve.cve_summary }}</p>
               <p><span class="span-detail">Criticité :</span></p>
-                <div class="detail-element criticity criticity-{{ cve.cve_criticity }}">
-                  {% if cve.cve_criticity == "F" %}
-                    Faible
-                  {% endif %}
-                  {% if cve.cve_criticity == "M" %}
-                    Moyen
-                  {% endif %}
-                  {% if cve.cve_criticity == "U" %}
-                    Urgent
-                  {% endif %}
+                <div class="detail-element criticity criticity-{{ cve.cvss }}">
+                  {{ cve.cvss }}
                 </div>
               <p><span class="span-detail">Statut :</span></p>
                 <div class="detail-element status status-{{ cve.cve_status }}">
-                  {% if cve.cve_status == "N" %}
-                  Nouveau
-                {% endif %}
-                {% if cve.cve_status == "A" %}
-                  Archivé
-                {% endif %}
+                  {{cve.cve_status}}
                 </div>
                 <hr style="color:green;">
               <p><span class="span-detail">Actions :</span></p>

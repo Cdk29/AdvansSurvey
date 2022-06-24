@@ -52,23 +52,15 @@
               {% if cve.cve_status != "N" %}
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>{{ cve.id }}</td>
-                    <td><a href="{% url 'cve:detail' cve.id %}"
+                    <td>{{ cve.cve_name }}</td>
+                    <td><a href="{% url 'cve:detail' cve.cve_name %}"
                       >{{ cve.cve_name }}</a
                     ></td>
                     <td>{{ cve.pub_date }}</td>
                     <td>{{ cve.cve_summary|truncatewords:20 }}</td>
                     <td>
-                      <div class="criticity criticity-{{ cve.cve_criticity }}">
-                        {% if cve.cve_criticity == "F" %}
-                          Faible
-                        {% endif %}
-                        {% if cve.cve_criticity == "M" %}
-                          Moyen
-                        {% endif %}
-                        {% if cve.cve_criticity == "U" %}
-                          Urgent
-                        {% endif %}
+                      <div class="criticity criticity-{{ cve.cvss }}">
+                        {{ cve.cvss }}
                       </div>
                     </td>
                     <td><div class="archive-button"><a href="#">Archiver</a></div></td>

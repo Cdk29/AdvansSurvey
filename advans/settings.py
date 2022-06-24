@@ -74,11 +74,12 @@ WSGI_APPLICATION = 'advans.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# ou app_database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+       'default': {
+           'ENGINE': 'djongo',
+           'NAME': 'app_database', # app_backend est la collection
+       }
 }
 
 
