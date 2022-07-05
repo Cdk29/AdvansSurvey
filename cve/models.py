@@ -8,7 +8,7 @@ from djongo import models
 class CVE(models.Model):
 
     cve_name = models.CharField(max_length=20)
-    cve_summary = models.TextField(default="...")
+    summary = models.TextField(default="...")
     pub_date = models.DateTimeField('date published')
     cvss = models.TextField(default="...")
     # cve_criticity = models.CharField(max_length=1, choices=CRITICITY_CODE)

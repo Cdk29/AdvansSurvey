@@ -51,11 +51,11 @@
                 <tr>
                     <td><input type="checkbox"></td>
                     <td>{{ cve.Id }}</td>
-                    <td><a href="{% url 'cve:detail' cve.cve_name %}"
+                    <td><a href="{% url 'cve:detail' cve.id %}"
                       >{{ cve.cve_name }}</a
                     ></td>
                     <td>{{ cve.pub_date }}</td>
-                    <td>{{ cve.cve_summary|truncatewords:20 }}</td>
+                    <td>{{ cve.summary|truncatewords:20 }}</td>
                     <td>
                       <div class="criticity criticity-{{ cve.cvss }}">
                         {{ cve.cvss }}
